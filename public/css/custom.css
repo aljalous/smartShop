@@ -1,0 +1,83 @@
+@font-face {
+    font-family: cairo1;
+    src: url(/Fonts/Cairo-Medium.ttf);
+  }
+  @font-face {
+    font-family: cairo2;
+    src: url(/Fonts/Cairo-ExtraBold.ttf);
+  }
+
+
+.nav-link {
+    font-family: cairo1;
+    color: aliceblue;
+   text-align: center;
+
+}
+
+.textfooter{
+    text-decoration: none;
+    color: rgb(29, 29, 30);
+
+}
+
+
+.smalllogoup {
+    height: 60px;
+}
+
+.profile-name {
+    font-family: cairo1; 
+    font-size: 30px;
+}
+/* .menu-title,.nav-link, .titlest1, */
+/* .nav-item{
+    font-family: cairo2; 
+    font-size: 20px;
+
+} */
+.card-header{
+    font-family: cairo2; 
+    font-size: 20px;
+    color: rgb(255, 30, 184);
+    text-align: right;
+    
+}
+/* .hr1{
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+} */
+div.card-body{
+    text-align:right;
+    
+}
+input[type="text"],select,option,label,input::placeholder,textarea,textarea::placeholder{
+    font-family: cairo1;
+    font-size:18px;
+}
+table,th,td,tr{
+    text-align:center;
+    font-family: cairo1;
+    font-size:18px;
+}
+
+.titlep1{
+text-align:center;
+
+font-family: cairo1;
+font-size:25px;
+color:rgb(202, 9, 160);
+}
+.btnmainsite{
+    text-align:center;
+    font-family: cairo1;
+    font-size:18px;
+}
+.btnmain{
+    text-align:center;
+}
