@@ -12,7 +12,7 @@ use App\Http\Controllers\Frontend\UsersController;
 use App\Http\Controllers\Frontend\CartsController;
 use App\Http\Controllers\Frontend\CheckoutsController;
 
-
+use App\Http\Controllers\Backend\MessagesController as messages; 
 use App\Http\Controllers\Backend\PagesController as BackendPagesController;
 use App\Http\Controllers\Auth\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Auth\Admin\ForgotPasswordController as AdminForgotPasswordController;
@@ -70,6 +70,13 @@ Route::group(['prefix' => 'checkout'], function () {
 // Admin Routes
 Route::group(['prefix' => 'admin'], function () {
   Route::get('/', [BackendPagesController::class, 'index'])->name('admin.index');
+
+// Admin Message ------------------------------------------------ hassanZamodi
+  Route::get('messages/index', [messages::class, 'index'])->name('message.show');
+  Route::get('messages', [messages::class, 'create'])->name('message.create');
+  Route::post('messages/create', [messages::class, 'store'])->name('message.store');
+  Route::get('messages/{id}', [messages::class, 'showSingle'])->name('viewmessage');
+  Route::post('/messages/delete/{id}', [messages::class, 'delete'])->name('message.delete');
 
   // Admin Login Routes
   Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');

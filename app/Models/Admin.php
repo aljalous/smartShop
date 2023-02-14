@@ -30,9 +30,14 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function Message()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
 
     public function sendPasswordResetNotification($token)
     {
-      $this->notify(new AdminPasswordResetNotification($token));
+        $this->notify(new AdminPasswordResetNotification($token));
     }
 }

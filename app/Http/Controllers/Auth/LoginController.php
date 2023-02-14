@@ -9,7 +9,7 @@ use App\Notifications\VerifyRegistration;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 
 class LoginController extends Controller
