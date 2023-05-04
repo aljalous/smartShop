@@ -7,11 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>المتجر الذكي - في التسوق متعة</title>
   <!-- plugins:css -->
- 
+
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
+  
   <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/admin_style.css')}}">
   <link rel="stylesheet" href="{{asset('css/custom.css')}}">
@@ -25,6 +26,7 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       @include('backend.partials.left_sidebar')
+
       @yield('content')
 
     </div>

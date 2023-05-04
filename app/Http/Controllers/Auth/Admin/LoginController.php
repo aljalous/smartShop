@@ -58,7 +58,7 @@ class LoginController extends Controller
   public function showLoginForm()
   {
     if (Auth::guard('admin')->check()) {
-      return redirect()->route('admin.index');
+      //return redirect()->route('admin.index');
     }
 
     return view('auth.admin.login');
@@ -80,7 +80,7 @@ class LoginController extends Controller
 
     if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
       // Log Him Now
-      return redirect()->intended(route('admin.index'));
+      return redirect()->intended(route('admin.login'));
     } else {
       session()->flash('sticky_error', 'Invalid Login');
       return back();

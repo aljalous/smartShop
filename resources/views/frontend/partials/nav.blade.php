@@ -43,7 +43,7 @@
             <button class="btn btn-danger">
               <span class="mt-1">سلة المشتريات</span>
               <span class="badge badge-warning" id="totalItems">
-                {{ App\Models\Cart::totalItems() }}
+                {{App\Models\Cart::totalItems() }}
               </span>
             </button>
 
@@ -52,8 +52,10 @@
         @guest
           <li><a class="nav-link" href="{{ route('login') }}">تسجيل دخول</a></li>
           <li><a class="nav-link" href="{{ route('register') }}">مستخدم جديد</a></li>
-          <li><a class="nav-link" href="{{ route('admin.index') }}" target="_blank">لوحة التحكم</a></li>
-        @else
+       {{--     <li><a class="nav-link" href="{{ route('admin.index') }}" target="_blank">لوحة التحكم</a></li>--}}
+          @else
+          
+        
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="{{ App\Helpers\ImageHelper::getUserImage(Auth::user()->id) }}" class="img rounded-circle" style="width:40px">

@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use App\Models\Category;
-use Image;
-use File;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+
 
 class CategoriesController extends Controller
 {
@@ -45,8 +45,8 @@ class CategoriesController extends Controller
     $category->parent_id = $request->parent_id;
     //insert images also
     
-    if ($request->image > 0) {
-        $image = $request->file('image');
+    if ($request->hasFile('image') && $request->file('image')->isValid()) {
+      $image = $request->file('image');
         $img = time() . '.'. $image->getClientOriginalExtension();
         $location = 'images/categories/' .$img;
         Image::make($image)->save($location);
@@ -66,7 +66,7 @@ class CategoriesController extends Controller
     if (!is_null($category)) {
       return view('backend.pages.categories.edit', compact('category', 'main_categories'));
     }else {
-      return resirect()->route('admin.categories');
+      return redirect()->route('admin.categories');
     }
   }
 

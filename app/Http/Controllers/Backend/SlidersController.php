@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Slider;
-use Image;
-use File;
+
+use Intervention\Image\Facades\Image;
+
+use Illuminate\Support\Facades\File;
 
 class SlidersController extends Controller
 {

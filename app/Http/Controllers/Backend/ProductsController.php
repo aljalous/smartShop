@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\ProductImage;
-use Image;
+use Intervention\Image\Facades\Image;
+
 
 class ProductsController extends Controller
 {
@@ -35,60 +36,49 @@ class ProductsController extends Controller
   }
 
 
+
   public function store(Request $request)
   {
-
     $request->validate([
-      'title'         => 'required|max:150',
-      'description'     => 'required',
-      'price'             => 'required|numeric',
-      'quantity'             => 'required|numeric',
-      'category_id'             => 'required|numeric',
-      'brand_id'             => 'required|numeric',
+      'title' => 'required|max:150',
+      'description' => 'required',
+      'price' => 'required|numeric',
+      'quantity' => 'required|numeric',
+      'category_id' => 'required|numeric',
+      'brand_id' => 'required|numeric',
+      'product_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
     ]);
-
-
 
     $product = new Product;
 
+    // تفاصيل المنتج
     $product->title = $request->title;
     $product->description = $request->description;
     $product->price = $request->price;
     $product->quantity = $request->quantity;
-
     $product->slug = Str::slug($request->title);
     $product->category_id = $request->category_id;
     $product->brand_id = $request->brand_id;
     $product->admin_id = 1;
     $product->save();
 
-    //ProductImage Model insert image
-
-    // if ($request->hasFile('product_image')) {
-    //   //insert that image
-    //   $image = $request->file('product_image');
-    //   $img = time() . '.'. $image->getClientOriginalExtension();
-    //   $location = public_path('images/products/' .$img);
-    //   Image::make($image)->save($location);
-    //
-    //   $product_image = new ProductImage;
-    //   $product_image->product_id = $product->id;
-    //   $product_image->image = $img;
-    //   $product_image->save();
-    // }
     if (count($request->product_image) > 0) {
       $i = 0;
       foreach ($request->product_image as $image) {
 
-        //insert that image
-        //$image = $request->file('product_image');
-        $img = time() . $i . '.' . $image->getClientOriginalExtension();
-        $location = 'images/products/' . $img;
-        Image::make($image)->save($location);
 
+        $img = Image::make($image);
+        $img->resize(800, 800, function ($constraint) {
+          $constraint->aspectRatio();
+          $constraint->upsize();
+        });
+        $img->encode('jpg', 1);
+        $img_name = time() . $i . '.jpg';
+        $location = 'images/products/' . $img_name;
+        $img->save($location);
         $product_image = new ProductImage;
         $product_image->product_id = $product->id;
-        $product_image->image = $img;
+        $product_image->image = $img_name;
         $product_image->save();
         $i++;
       }

@@ -3,13 +3,15 @@
         <li class="nav-item nav-profile">
             <div class="nav-link">
                 <div class="profile-image">
-                    <img src="/images/faces/iyad.jpg" alt="image" />
+                    <img src="/images/faces/face24.jpg" alt="image" />
                     <span class="online-status online"></span>
                 </div>
                 <div class="profile-name">
-                    <p class="name">اياد الجالوس</p>
+                    <p class="name"> </p>
                     <p class="designation">مدير الموقع</p>
+
                     <div class="badge badge-teal mx-auto mt-3">Online</div>
+
                 </div>
             </div>
         </li>
@@ -84,7 +86,8 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin.divisions') }}">ادارة المدن</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin.division.create') }}">اضافة
                             مدينة</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.districts') }}">ادارة المناطق</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.districts') }}">ادارة
+                            المناطق</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin.district.create') }}">اضافة
                             منطقة</a></li>
@@ -134,4 +137,3 @@
 
     </ul>
 </nav>
-<!-- partial -->

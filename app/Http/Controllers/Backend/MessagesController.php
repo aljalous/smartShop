@@ -27,7 +27,7 @@ class MessagesController extends Controller
             'content' => 'required',
             'message_subject' => 'required',
         ]);
-        auth()->user();
+        
 
         Message::create([
             'sender_id' =>$request->admin_id,
@@ -39,7 +39,6 @@ class MessagesController extends Controller
             ->with('success', 'تم إضافة الرسالة بنجاح.');
     }
     
-
 
 
     public function create()

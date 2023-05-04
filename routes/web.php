@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdminController as Admin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -70,6 +71,18 @@ Route::group(['prefix' => 'checkout'], function () {
 // Admin Routes
 Route::group(['prefix' => 'admin'], function () {
   Route::get('/', [BackendPagesController::class, 'index'])->name('admin.index');
+
+
+  Route::get('profile', [Admin::class, 'show'])->name('profile');
+  Route::post('profile', [Admin::class, 'update'])->name('admin.update');
+ 
+
+  //admin Pictures library
+  Route::get('Pictures_library', [admin::class,'Pictures'])->name('Pictures.show');
+  Route::post('Pictures_library', [admin::class,'Picturess']);
+
+
+
 
 // Admin Message ------------------------------------------------ hassanZamodi
   Route::get('messages/index', [messages::class, 'index'])->name('message.show');

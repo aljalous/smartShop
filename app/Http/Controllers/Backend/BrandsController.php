@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Brand;
-use Image;
-use File;
+use Intervention\Image\Facades\Image;
+
+use Illuminate\Support\Facades\File;
 
 class BrandsController extends Controller
 {
